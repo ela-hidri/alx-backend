@@ -52,7 +52,7 @@ class Server:
             end = row[1]
             return dataset[st:end]
         return []
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         creates a dictionary
