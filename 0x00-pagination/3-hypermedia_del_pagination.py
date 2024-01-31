@@ -8,7 +8,6 @@ import math
 from typing import Dict, List, Tuple
 
 
-
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -42,7 +41,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-        
+        pagination
         """
         focus = []
         dataset = self.indexed_dataset()
