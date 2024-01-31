@@ -6,7 +6,7 @@ from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """ 
+    """
     Caching System using FIFO
     """
     def __init__(self):
@@ -33,4 +33,3 @@ class FIFOCache(BaseCaching):
         if key in self.cache_data:
             return self.cache_data[key]
         return None
-    
