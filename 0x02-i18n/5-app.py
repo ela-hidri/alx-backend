@@ -36,7 +36,7 @@ def get_user():
     returns a user dictionary or None
     """
     if request.args.get("login_as"):
-        return users[int(request.args.get("login_as"))]
+        return users.get(int(request.args.get("login_as")))
     return None
 
 @app.before_request
@@ -49,7 +49,7 @@ def index():
     """
     return page with Hello world
     """
-    return render_template("4-index.html")
+    return render_template("5-index.html")
 
 
 @babel.localeselector
