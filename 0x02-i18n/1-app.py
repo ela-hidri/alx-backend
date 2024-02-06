@@ -5,9 +5,6 @@ init flesk app
 from flask import Flask
 from flask import render_template
 from flask_babel import Babel
-app = Flask(__name__)
-app.config.from_pyfile('mysettings.cfg')
-babel = Babel(app)
 
 
 class Config:
@@ -15,6 +12,15 @@ class Config:
     config class
     """
     LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+
+
+app = Flask(__name__)
+app.config.from_object(Config)
+app.url_map.strict_slashes = False
+
+babel = Babel(app)
 
 
 @app.route("/")
