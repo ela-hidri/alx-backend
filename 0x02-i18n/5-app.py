@@ -35,8 +35,8 @@ def get_user():
     """
     returns a user dictionary or None
     """
-    if app.request.get("login_as"):
-        return users[int(app.request.get("login_as"))]
+    if request.args.get("login_as"):
+        return users[int(request.args.get("login_as"))]
     return None
 
 @app.before_request
