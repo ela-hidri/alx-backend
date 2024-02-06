@@ -5,6 +5,7 @@ init flesk app
 from flask import Flask
 from flask import render_template
 from flask_babel import Babel
+from flask import request
 
 
 class Config:
@@ -28,9 +29,16 @@ def index():
     """
     return page with Hello world
     """
-    return render_template("1-index.html")
+    return render_template("1-index.html", home_title=gettext(''), home_header=gettext)
+
+
+@babel.localeselector
+def get_locale():
+    """
+    determine the best match with our supported languages.
+    """
+    return request.accept_languages.best_match(['fr', 'en'])
 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='5000')
-    
