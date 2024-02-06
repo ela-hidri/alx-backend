@@ -39,10 +39,12 @@ def get_user():
         return users.get(int(request.args.get("login_as")))
     return None
 
+
 @app.before_request
 def before_request():
     """find a user if any, and set it as a global on flask.g.user"""
     g.user = get_user()
+
 
 @app.route("/")
 def index():
