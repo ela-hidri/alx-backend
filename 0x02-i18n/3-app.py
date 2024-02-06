@@ -29,7 +29,7 @@ def index():
     """
     return page with Hello world
     """
-    return render_template("1-index.html", home_title=gettext(''), home_header=gettext)
+    return render_template("3-index.html")
 
 
 @babel.localeselector
