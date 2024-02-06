@@ -3,9 +3,16 @@
 init flesk app
 """
 from flask import Flask
-from flask import render_template
+from flask import render_template, g
 from flask_babel import Babel
 from flask import request
+
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
 
 
 class Config:
@@ -23,6 +30,19 @@ app.url_map.strict_slashes = False
 
 babel = Babel(app)
 
+
+def get_user():
+    """
+    returns a user dictionary or None
+    """
+    if app.request.get("login_as"):
+        return users[int(app.request.get("login_as"))]
+    return None
+
+@app.before_request
+def before_request():
+    """find a user if any, and set it as a global on flask.g.user"""
+    g.user = get_user()
 
 @app.route("/")
 def index():
