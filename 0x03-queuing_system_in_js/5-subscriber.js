@@ -11,8 +11,7 @@ client.on('error', (err) => {
 client.subscribe('holberton school channel')
 
 client.on('message', (channel, message) => {
+    console.log(message);
     if (message == 'KILL_SERVER')
-        client.ununsubscribe('holberton school channel');
-    else
-        console.log(message);
+        client.unsubscribe('holberton school channel');
   });
