@@ -7,11 +7,10 @@ function sendNotification(phoneNumber, message, job, done){
     job.progress(0, 100);
 
     if (blacklist.includes(phoneNumber)){
-        job.failed().error(new Error(`Phone number ${phoneNumber} is blacklisted`));
-        done();
+        done(Error(`Phone number ${phoneNumber} is blacklisted`));
     }
     else{
-        job.progress(0, 50);
+        job.progress(50, 100);
         console.log(`Sending notification to ${phoneNumber}, with message: ${message}`);
     }
 }
