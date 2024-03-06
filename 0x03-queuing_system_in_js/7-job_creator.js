@@ -47,7 +47,7 @@ const jobs = [
       message: 'This is the code 4321 to verify your account'
     }
   ];
-jobs.forEach(job=>{
+jobs.forEach(data=>{
     const job = queue.create('push_notification_code', data).save((err) => {
         if (!err)
             console.log('Notification job created: ', job.id)
